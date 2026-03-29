@@ -7,7 +7,7 @@ import PeepsSelection from "./widget-contents/peeps-selection";
 export default function WidgetContainer() {
     const [isWidgetOpen, setIsWidgetOpen] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<ReactNode | null>(null);
-
+    const { Controller: PeepsController, Stage: PeepsStage } = PeepsSelection();
     return (
         <>
             <div className="fixed bottom-0 right-0 flex flex-col items-end gap-2.5 p-5">
@@ -19,7 +19,7 @@ export default function WidgetContainer() {
 
                     <p className="text-center">Misc</p>
 
-                    <PeepsSelection />
+                    <PeepsController />
                     <ThemeSelection openModal={setModalContent} />
 
                     <div className="card card-sm bg-primary p-5">
@@ -34,7 +34,7 @@ export default function WidgetContainer() {
                     Click
                 </button>
             </div>
-
+            <PeepsStage />
             {modalContent && (
                 <div className="modal modal-open">
                     <div className="modal-box max-w-5xl">
