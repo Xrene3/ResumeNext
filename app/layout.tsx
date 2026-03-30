@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import WidgetContainer from "./widgets/widget";
 import "./globals.css";
+import clsx from "clsx";
+import WaveContainer from "./components/Wavify/Wavify";
+import Stars from "./components/Stars/Stars";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +14,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -26,10 +35,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+        className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       >
-        <body className="min-h-full flex flex-col transition-colors duration-300 ease-in-out bg-base-300 text-base-content">
-          {children}
+        <body className={clsx("relative min-h-full flex flex-col transition-colors duration-300 ease-in-out bg-base-300 text-base-content", montserrat.variable)}>
+          <Stars />
+            {children}
+          <WaveContainer />
           <WidgetContainer />
         </body>
     </html>
