@@ -37,9 +37,9 @@ export default function RootLayout({
       lang="en"
         className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       >
-        <body className={clsx("relative min-h-full flex flex-col transition-colors duration-300 ease-in-out bg-base-300 text-base-content", montserrat.variable)}>
-          <Stars />
+        <body className={clsx("relative min-h-full flex flex-col transition-colors duration-300 ease-in-out bg-base-300 text-base-content z-0", montserrat.variable)}>
             {children}
+          <Stars />
           <WaveContainer />
           <WidgetContainer />
         </body>
